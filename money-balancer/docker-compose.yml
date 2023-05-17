@@ -1,0 +1,11 @@
+version: "3"
+services:
+  money-balancer:
+    image: ghcr.io/dorianim/money-balancer
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+    volumes:
+      - ./data:/data
+    environment:
+      - MONEYBALANCER_JWT_SECRET=some_super_secret_secret

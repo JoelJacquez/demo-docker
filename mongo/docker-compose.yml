@@ -1,0 +1,20 @@
+version: '3'
+services:
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+
+  mongoclient:
+    image: mongoclient/mongoclient
+    restart: always
+    ports:
+      - 3000:3000
+    environment:
+      - MONGOCLIENT_URL=mongodb://mongo:27017
+    depends_on:
+      - mongo
+
+volumes:
+  mongo-data:
